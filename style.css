@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.contenedor {
+	width: 400px;
+	margin: 40px auto;
+}
+h2 {
+	margin-bottom: 30px;
+}
+.campo {
+	margin-bottom: 20px;
+}
+label {
+	display: block;
+	margin-bottom: 4px;
+}
+input {
+	padding: 5px;
+}
+.acciones {
+  display: flex;
+  justify-content: space-between;
+}
+#txtNombre {
+	width: 100%;
+}
+#btnRegistrar, #btnMostrar {
+	margin-top: 20px;
+}

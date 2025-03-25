@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 1</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="Clases.js"></script>
+	<script>
+
+  // Array global de usuarios
+  let usuarios = [];
+
+	// Función registrarUsuario()
+	function registrarUsuario() {
+      
+      let nombre = document.getElementById("txtNombre").value;
+      let user = document.getElementById("txtUser").value;
+      let password = document.getElementById("txtPassword").value;
+      
+      let nuevoUsuario = new Usuario(nombre, user, password);
+    
+      usuarios.push(nuevoUsuario);
+	  alert ("Usuario registrado correctamente"); 
+    }
+
+	// Función mostrarUsuarios()
+	function mostrarUsuarios() {
+		const usuariosContainer = document.getElementById("usuariosContainer");
+		usuariosContainer.innerHTML = ""; 
+
+	
+		usuarios.forEach(function(usuario, index) {
+			
+			const usuarioDiv = document.createElement("div");
+			usuarioDiv.classList.add("usuario");
+
+			const h3 = document.createElement("h3");
+			h3.textContent = "-- USUARIO " + (index + 1) + " --";
+
+			const pNombre = document.createElement("p");
+			pNombre.innerHTML = "<strong>Nombre:</strong> " + usuario.getNombre();
+
+			const pUser = document.createElement("p");
+			pUser.innerHTML = "<strong>User:</strong> " + usuario.getUser();
+
+			const pPassword = document.createElement("p");
+			pPassword.innerHTML = "<strong>Password:</strong> " + usuario.getPassword();
+
+			usuarioDiv.appendChild(h3);
+			usuarioDiv.appendChild(pNombre);
+			usuarioDiv.appendChild(pUser);
+			usuarioDiv.appendChild(pPassword);
+
+			usuariosContainer.appendChild(usuarioDiv);
+		});
+		}
+	
+	// Función main()
+	function main() {
+      document.getElementById("btnRegistrar").addEventListener("click", registrarUsuario);
+      document.getElementById("btnMostrar").addEventListener("click", mostrarUsuarios);
+    }
+	
+	// Tras cargarse el DOM, ejecutar main()
+	window.addEventListener("load", main);
+  
+	</script>
+</head>
+<body>
+	<div class="contenedor">
+		<h2>Registro de usuarios</h2>
+		<div class="campo">
+			<label>Nombre: </label>
+			<input type="text" id="txtNombre" value="">
+		</div>
+		<div class="campo">
+			<label>User name: </label>
+			<input type="text" id="txtUser" value="">
+		</div>
+		<div class="campo">
+			<label>Password: </label>
+			<input type="text" id="txtPassword" value="">
+		</div>
+    <div class="acciones">		
+      <div class="campo">
+        <input type="button" id="btnRegistrar" value="Registrar">
+      </div>
+      <div class="campo">
+        <input type="button" id="btnMostrar" value="Ver usuarios">
+      </div>
+    </div>
+	<div id="usuariosContainer"></div>
+	</div>
+</body>
+</html>
+
